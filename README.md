@@ -1,5 +1,9 @@
 # student-portal-frontend
+
 ERIC WUZ HERE
+
+My name is Andy nerds
+
 ## Project setup
 ```
 npm install
