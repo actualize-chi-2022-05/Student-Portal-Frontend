@@ -1,5 +1,5 @@
 # student-portal-frontend
-
+ERIC WUZ HERE
 ## Project setup
 ```
 npm install
