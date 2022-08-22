@@ -4,6 +4,8 @@ ERIC WUZ HERE
 
 My name is Andy nerds
 
+Geoff was HERE
+
 ## Project setup
 ```
 npm install
