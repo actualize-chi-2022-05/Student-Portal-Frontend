@@ -1,3 +1,35 @@
+<script>
+// @ is an alias to /src
+// import HelloWorld from "@/components/HelloWorld.vue";
+import axios from "axios";
+export default {
+  data: function () {
+    return {
+      educations: [],
+      capstones: [],
+    };
+  },
+  created: function () {
+    this.indexEducations();
+    this.indexCapstones();
+  },
+  methods: {
+    indexEducations: function () {
+      axios.get("/educations").then((response) => {
+        console.log("educations index", response);
+        this.educations = response.data;
+      });
+    },
+    indexCapstones: function () {
+      axios.get("/capstones").then((response) => {
+        console.log("capstones index", response);
+        this.capstones = response.data;
+      });
+    },
+  },
+};
+</script>
+
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
@@ -14,28 +46,17 @@
       </div>
     </div>
   </div>
+  <div class="education">
+    <h1>Education</h1>
+    <div v-for="education in educations" v-bind:key="education.id">
+      <h2>{{ education.name }}</h2>
+      <img v-bind:src="photo.url" v-bind:alt="photo.name" />
+      <p>Start Date: {{ education.startDate }}</p>
+      <p>End Date: {{ education.endDate }}</p>
+      <p>Degree: {{ education.degree }}</p>
+      <p>Details: {{ education.details }}</p>
+    </div>
+  </div>
 </template>
 
-<script>
-// @ is an alias to /src
-// import HelloWorld from "@/components/HelloWorld.vue";
-import axios from "axios";
-export default {
-  data: function () {
-    return {
-      capstones: [],
-    };
-  },
-  created: function () {
-    this.indexCapstones();
-  },
-  methods: {
-    indexCapstone: function () {
-      axios.get("/capstones").then((response) => {
-        console.log("capstones index", response);
-        this.capstones = response.data;
-      });
-    },
-  },
-};
-</script>
+<style></style>
