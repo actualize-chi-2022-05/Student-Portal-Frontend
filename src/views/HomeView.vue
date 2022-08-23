@@ -1,13 +1,17 @@
 <script>
+// @ is an alias to /src
+// import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "axios";
 export default {
   data: function () {
     return {
       educations: [],
+      capstones: [],
     };
   },
   created: function () {
     this.indexEducations();
+    this.indexCapstones();
   },
   methods: {
     indexEducations: function () {
@@ -16,12 +20,33 @@ export default {
         this.educations = response.data;
       });
     },
+    indexCapstones: function () {
+      axios.get("/capstones").then((response) => {
+        console.log("capstones index", response);
+        this.capstones = response.data;
+      });
+    },
   },
 };
 </script>
 
 <template>
   <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png" />
+    <HelloWorld msg="Welcome to Your Vue.js App" />
+  </div>
+
+  <div class="capstone">
+    <div class="container">
+      <h1>Capstone Name: {{ capstone.name }}</h1>
+      <div v-for="capstone in capstones" v-bind:key="capstone.id">
+        <p>Description: {{ capstone.description }}</p>
+        <p>Capstone URL: {{ capstone.url }}</p>
+        <img src="screenshot" alt="capstone-screenshot" />
+      </div>
+    </div>
+  </div>
+  <div class="education">
     <h1>Education</h1>
     <div v-for="education in educations" v-bind:key="education.id">
       <h2>{{ education.name }}</h2>
