@@ -1,10 +1,15 @@
 # student-portal-frontend
 
+
+## Dev Words of Wisdom
 ERIC WUZ HERE
 
 My name is Andy nerds
 
 Geoffs turn
+Geoff was HERE
+
+John is also here with the nerds!
 ## Project setup
 ```
 npm install
