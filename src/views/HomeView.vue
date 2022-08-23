@@ -7,9 +7,11 @@
   <div class="capstone">
     <div class="container">
       <h1>Capstone Name: {{ capstone.name }}</h1>
-      <p>Description: {{ capstone.description }}</p>
-      <p>Capstone URL: {{ capstone.url }}</p>
-      <img src="screenshot" alt="capstone-screenshot" />
+      <div v-for="capstone in capstones" v-bind:key="capstone.id">
+        <p>Description: {{ capstone.description }}</p>
+        <p>Capstone URL: {{ capstone.url }}</p>
+        <img src="screenshot" alt="capstone-screenshot" />
+      </div>
     </div>
   </div>
 </template>
@@ -21,7 +23,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      capstone: [],
+      capstones: [],
     };
   },
   created: function () {
