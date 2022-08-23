@@ -1,18 +1,37 @@
-<template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
-</template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import axios from "axios";
 export default {
-  name: "HomeView",
-  components: {
-    HelloWorld,
+  data: function () {
+    return {
+      education: [],
+    };
+  },
+  created: function () {
+    this.indexEducations();
+  },
+  methods: {
+    indexEducations: function () {
+      axios.get("/educations").then((response) => {
+        console.log("educations index", response);
+        this.educations = response.data;
+      });
+    },
   },
 };
 </script>
+
+<template>
+  <div class="home">
+    <h1>Education</h1>
+    <div v-for="education in educations" v-bind:key="education.id">
+      <h2>{{ education.name }}</h2>
+      <img v-bind:src="photo.url" v-bind:alt="photo.name" />
+      <p>Start Date: {{ education.startDate }}</p>
+      <p>End Date: {{ education.endDate }}</p>
+      <p>Degree: {{ education.degree }}</p>
+      <p>Details: {{ education.details }}</p>
+    </div>
+  </div>
+</template>
+
+<style></style>
