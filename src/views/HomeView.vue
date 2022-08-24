@@ -6,12 +6,14 @@ export default {
       educations: [],
       experiences: [],
       capstones: [],
+      skills: [],
     };
   },
   created: function () {
     this.indexEducations();
     this.indexExperience();
     this.indexCapstones();
+    this.indexSkills();
   },
   methods: {
     indexEducations: function () {
@@ -32,6 +34,12 @@ export default {
         this.experience = response.data;
       });
     },
+    indexSkills: function () {
+      axios.get("/skills").then((response) => {
+        console.log("skills index", response);
+        this.experience = response.data;
+      });
+    },
   },
 };
 </script>
@@ -42,14 +50,10 @@ export default {
     <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 
-  <div class="capstone">
-    <div class="container">
-      <h1>Capstone Name: {{ capstone.name }}</h1>
-      <div v-for="capstone in capstones" v-bind:key="capstone.id">
-        <p>Description: {{ capstone.description }}</p>
-        <p>Capstone URL: {{ capstone.url }}</p>
-        <img src="screenshot" alt="capstone-screenshot" />
-      </div>
+  <div class="skill">
+    <h1>Experience</h1>
+    <div v-for="skill in skills" v-bind:key="skill.id">
+      <p>Skill: {{ skill.name }}</p>
     </div>
   </div>
   <div class="experience">
@@ -61,10 +65,6 @@ export default {
       <p>Company Name: {{ experience.companyName }}</p>
       <p>Details: {{ experience.details }}</p>
     </div>
-  </div>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
   <div class="capstone">
     <div class="container">
