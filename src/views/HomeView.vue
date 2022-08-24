@@ -28,9 +28,9 @@ export default {
         this.capstones = response.data;
       });
     },
-    indexExperience: function () {
-      axios.get("/experience").then((response) => {
-        console.log("experience index", response);
+    indexExperiences: function () {
+      axios.get("/experiences").then((response) => {
+        console.log("experiences index", response);
         this.experience = response.data;
       });
     },

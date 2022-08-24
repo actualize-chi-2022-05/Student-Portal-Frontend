@@ -4,6 +4,7 @@ export default {
     return {
       isLoggedIn: false,
       flashMessage: "",
+      darkMode: false,
     };
   },
   methods: {
@@ -16,6 +17,31 @@ export default {
       this.isLoggedIn = !!localStorage.jwt;
       this.flashMessage = localStorage.getItem("flashMessage");
       this.flashMessage = localStorage.removeItem("flashMessage");
+    },
+  },
+  dark() {
+    document.querySelector("body").classList.add("dark-mode");
+    this.darkMode = true;
+    this.$emit("dark");
+  },
+
+  light() {
+    document.querySelector("body").classList.remove("dark-mode");
+    this.darkMode = false;
+    this.$emit("light");
+  },
+
+  modeToggle() {
+    if (this.darkMode || document.querySelector("body").classList.contains("dark-mode")) {
+      this.light();
+    } else {
+      this.dark();
+    }
+  },
+
+  computed: {
+    darkDark() {
+      return this.darkMode && "darkmode-toggled";
     },
   },
 };
@@ -68,6 +94,15 @@ export default {
             aria-label="Search"
           />
           <button class="btn btn-success" type="submit">Search</button>
+
+          <div>
+            <!-- Rounded switch -->
+            <label class="switch">
+              <input type="checkbox" onchange="darkMode()" />
+              <span class="slider round"></span>
+              <!-- <toggle onclick="darkMode()">Darkmode</toggle> -->
+            </label>
+          </div>
         </form>
       </div>
     </div>
