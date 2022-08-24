@@ -67,7 +67,17 @@ export default {
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-success" type="submit">Search</button>
+          <button
+            class="btn btn-outline-dark"
+            style="
+              --bs-btn-padding-y: 0.25rem;
+              --bs-btn-padding-x: 0.5rem;
+              --bs-btn-font-size: 1rem;
+            "
+            type="submit"
+          >
+            Search
+          </button>
         </form>
       </div>
     </div>
@@ -79,9 +89,6 @@ export default {
 </template>
 
 <style>
-.container-fluid {
-  color: #931c94;
-}
 #app {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
