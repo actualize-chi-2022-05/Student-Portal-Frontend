@@ -13,7 +13,8 @@ export default {
       axios
         .post("/sessions", this.newSessionParams)
         .then((response) => {
-          axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+          axios.defaults.headers.common["Authorization"] =
+            "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           this.$router.push("/post");
         })
@@ -35,15 +36,48 @@ export default {
       <ul>
         <li v-for="error in errors" v-bind:key="error">{{ error }}</li>
       </ul>
-      <div>
+      <div class="email">
         <label>Email:</label>
-        <input type="email" v-model="newSessionParams.email" />
+        <input
+          class="form-control form-control-sm"
+          type="email"
+          placeholder="Example@example.com"
+          aria-label=".form-control-sm"
+          v-model="newSessionParams.email"
+        />
       </div>
-      <div>
+      <div class="password">
         <label>Password:</label>
-        <input type="password" v-model="newSessionParams.password" />
+        <input
+          class="form-control form-control-sm"
+          type="password"
+          placeholder="Type in your incredibly unique password"
+          aria-label=".form-control-sm"
+          v-model="newSessionParams.email"
+        />
       </div>
-      <input type="submit" value="Submit" />
     </form>
   </div>
 </template>
+
+<style>
+.login {
+  font-size: large;
+  font-style: bold;
+  font-weight: bolder;
+}
+.email {
+  width: 50%;
+  text-align: left;
+  align-content: center;
+  margin: auto;
+  padding: 10px;
+}
+.password {
+  width: 50%;
+  text-align: left;
+  align-content: center;
+  margin: auto;
+  padding: 10px;
+}
+</style>
