@@ -13,6 +13,119 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: absolute;
+        justify-content: right;
+        align-items: right;
+        min-height: 100vh;
+      }
+      .dark-mode {
+        background-color: black;
+        color: white;
+        
+      }
+      .light-mode {
+        background-color: white;
+        color: black;
+      }
+      /* slider css */
+      /* The switch - the box around the slider */
+.switch {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  left: 10px;
+  top: 2px;
+  width: 3.5em;
+  height: 2em;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f4f4f5;
+  transition: .4s;
+  border-radius: 30px;
+
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 20px;
+  left: .3em;
+  bottom: .3em;
+  background: linear-gradient(40deg,#ff0080,#ff8c80 70%);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #303136;
+}
+
+/* input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+} */
+
+input:checked + .slider:before {
+
+  transform: translateX(1.5em);
+  background: #303136;
+  box-shadow: inset -3px -2px 5px -2px #8983f7, inset -10px -5px 0 0 #a3dafb;
+}
+
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+  </style>
+  <!-- <h3 id="DarkModetext">Dark Mode is OFF</h3> -->
+  <!-- <button onclick="darkMode()">Darkmode</button>
+  <button onclick="lightMode()">LightMode</button> -->
+  
+
+
+  <script>
+    function darkMode() {
+      var element = document.body;
+      var content = document.getElementById("DarkModetext");
+      element.className = "dark-mode";
+      content.innerText = "Dark Mode is ON";
+    }
+    function lightMode() {
+      var element = document.body;
+      var content = document.getElementById("DarkModetext");
+      element.className = "light-mode";
+      content.innerText = "Dark Mode is OFF";
+    }
+  </script>
+  <script>
+    function darkMode() {
+      var element = document.body;
+      element.classList.toggle("dark-mode");
+    }
+  </script>
   </body>
 </html>
