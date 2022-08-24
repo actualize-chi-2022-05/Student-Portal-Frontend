@@ -48,9 +48,21 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav
+    class="navbar sticky-top navbar-expand-lg navbar-dark"
+    style="background-color: #19a6c8"
+  >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Student Portal</a>
+      <a class="navbar-brand" href="#">
+        <img
+          src="./assets/studentPortal.png"
+          alt=""
+          width="50"
+          height="50"
+          class="d-inline-block align-text-top"
+        />
+        Student Portal
+      </a>
       <button
         class="navbar-toggler"
         type="button"
@@ -64,7 +76,9 @@ export default {
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li><a class="nav-link" href="/home">Student Data</a></li>
+          <li>
+            <a class="nav-link" href="/home">Student Data</a>
+          </li>
           <li>
             <a v-if="!isLoggedIn" class="nav-link" href="/login">Sign In</a>
           </li>
@@ -73,7 +87,12 @@ export default {
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
           <button class="btn btn-success" type="submit">Search</button>
 
           <div>
@@ -88,7 +107,6 @@ export default {
       </div>
     </div>
   </nav>
-
   <div v-if="this.flashMessage" class="alert alert-success">
     {{ flashMessage }}
   </div>
@@ -96,6 +114,9 @@ export default {
 </template>
 
 <style>
+.container-fluid {
+  color: #931c94;
+}
 #app {
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
