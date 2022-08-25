@@ -3,7 +3,7 @@ export default {
   data: function () {
     return {
       isLoggedIn: false,
-      flashMessage: "",
+      // flashMessage: "",
       darkMode: false,
     };
   },
@@ -14,9 +14,9 @@ export default {
   },
   watch: {
     $route: function () {
-      this.isLoggedIn = !!localStorage.jwt;
-      this.flashMessage = localStorage.getItem("flashMessage");
-      this.flashMessage = localStorage.removeItem("flashMessage");
+      // this.isLoggedIn = !!localStorage.jwt;
+      // this.flashMessage = localStorage.getItem("flashMessage");
+      // this.flashMessage = localStorage.removeItem("flashMessage");
     },
   },
   dark() {
@@ -68,7 +68,7 @@ export default {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
-            <a class="nav-link" href="/home">Student Data</a>
+            <a class="nav-link" href="/">Student Data</a>
           </li>
           <li>
             <a v-if="!isLoggedIn" class="nav-link" href="/login">Sign In</a>
@@ -78,8 +78,6 @@ export default {
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button class="btn btn-success" type="submit">Search</button>
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button
             class="btn btn-outline-dark"
@@ -100,9 +98,9 @@ export default {
       </div>
     </div>
   </nav>
-  <div v-if="this.flashMessage" class="alert alert-success">
+  <!-- <div v-if="this.flashMessage" class="alert alert-success">
     {{ flashMessage }}
-  </div>
+  </div> -->
   <router-view />
 </template>
 

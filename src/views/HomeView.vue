@@ -11,7 +11,7 @@ export default {
   },
   created: function () {
     this.indexEducations();
-    this.indexExperience();
+    this.indexExperiences();
     this.indexCapstones();
     this.indexSkills();
   },
@@ -31,13 +31,13 @@ export default {
     indexExperiences: function () {
       axios.get("/experiences").then((response) => {
         console.log("experiences index", response);
-        this.experience = response.data;
+        this.experiences = response.data;
       });
     },
     indexSkills: function () {
       axios.get("/skills").then((response) => {
         console.log("skills index", response);
-        this.experience = response.data;
+        this.skills = response.data;
       });
     },
   },
@@ -47,42 +47,40 @@ export default {
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Welcome Students to your resume data</h1>
   </div>
-
   <div class="skill">
-    <h1>Experience</h1>
+    <h3>Skill</h3>
     <div v-for="skill in skills" v-bind:key="skill.id">
-      <p>Skill: {{ skill.name }}</p>
+      <p>Skill: {{ skill.skill }}</p>
     </div>
   </div>
   <div class="experience">
-    <h1>Experience</h1>
+    <h3>Experience</h3>
     <div v-for="experience in experiences" v-bind:key="experience.id">
-      <p>Start Date: {{ experience.startDate }}</p>
-      <p>End Date: {{ experience.endDate }}</p>
-      <p>Job Title: {{ experience.jobTitle }}</p>
-      <p>Company Name: {{ experience.companyName }}</p>
+      <p>Job Title: {{ experience.job_title }}</p>
+      <p>Company Name: {{ experience.company_name }}</p>
+      <p>Start Date: {{ experience.start_date }}</p>
+      <p>End Date: {{ experience.end_date }}</p>
       <p>Details: {{ experience.details }}</p>
     </div>
   </div>
   <div class="capstone">
-    <div class="container">
-      <h1>Capstone Name: {{ capstone.name }}</h1>
-      <div v-for="capstone in capstones" v-bind:key="capstone.id">
-        <p>Description: {{ capstone.description }}</p>
-        <p>Capstone URL: {{ capstone.url }}</p>
-        <img src="screenshot" alt="capstone-screenshot" />
-      </div>
+    <!-- <h3>Capstone</h3> -->
+    <div v-for="capstone in capstones" v-bind:key="capstone.id">
+      <h3>Capstone Name: {{ capstone.name }}</h3>
+      <p>Description: {{ capstone.description }}</p>
+      <p>Capstone URL: {{ capstone.url }}</p>
+      <img v-bind:src="capstone.screenshot" alt="capstone screenshot" height="200  " />
     </div>
   </div>
   <div class="education">
-    <h1>Education</h1>
+    <h3>Education</h3>
     <div v-for="education in educations" v-bind:key="education.id">
       <h2>{{ education.name }}</h2>
-      <img v-bind:src="photo.url" v-bind:alt="photo.name" />
-      <p>Start Date: {{ education.startDate }}</p>
-      <p>End Date: {{ education.endDate }}</p>
+      <h5>University: {{ education.university_name }}</h5>
+      <p>Start Date: {{ education.start_date }}</p>
+      <p>End Date: {{ education.end_date }}</p>
       <p>Degree: {{ education.degree }}</p>
       <p>Details: {{ education.details }}</p>
     </div>
