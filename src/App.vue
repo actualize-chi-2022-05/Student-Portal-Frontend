@@ -3,7 +3,7 @@ export default {
   data: function () {
     return {
       isLoggedIn: false,
-      flashMessage: "",
+      // flashMessage: "",
       darkMode: false,
     };
   },
@@ -14,9 +14,9 @@ export default {
   },
   watch: {
     $route: function () {
-      this.isLoggedIn = !!localStorage.jwt;
-      this.flashMessage = localStorage.getItem("flashMessage");
-      this.flashMessage = localStorage.removeItem("flashMessage");
+      // this.isLoggedIn = !!localStorage.jwt;
+      // this.flashMessage = localStorage.getItem("flashMessage");
+      // this.flashMessage = localStorage.removeItem("flashMessage");
     },
   },
   dark() {
@@ -32,10 +32,7 @@ export default {
   },
 
   modeToggle() {
-    if (
-      this.darkMode ||
-      document.querySelector("body").classList.contains("dark-mode")
-    ) {
+    if (this.darkMode || document.querySelector("body").classList.contains("dark-mode")) {
       this.light();
     } else {
       this.dark();
@@ -51,19 +48,10 @@ export default {
 </script>
 
 <template>
-  <nav
-    class="navbar sticky-top navbar-expand-lg navbar-dark"
-    style="background-color: #19a6c8"
-  >
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark" style="background-color: #19a6c8">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">
-        <img
-          src="./assets/studentPortal.png"
-          alt=""
-          width="50"
-          height="50"
-          class="d-inline-block align-text-top"
-        />
+        <img src="./assets/studentPortal.png" alt="" width="50" height="50" class="d-inline-block align-text-top" />
         Student Portal
       </a>
       <button
@@ -80,7 +68,7 @@ export default {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li>
-            <a class="nav-link" href="/home">Student Data</a>
+            <a class="nav-link" href="/">Student Data</a>
           </li>
           <li>
             <a v-if="!isLoggedIn" class="nav-link" href="/login">Sign In</a>
@@ -90,19 +78,10 @@ export default {
           </li>
         </ul>
         <form class="d-flex" role="search">
-          <input
-            class="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
           <button
             class="btn btn-outline-dark"
-            style="
-              --bs-btn-padding-y: 0.25rem;
-              --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 1rem;
-            "
+            style="--bs-btn-padding-y: 0.25rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1rem"
             type="submit"
           >
             Search
@@ -119,9 +98,9 @@ export default {
       </div>
     </div>
   </nav>
-  <div v-if="this.flashMessage" class="alert alert-success">
+  <!-- <div v-if="this.flashMessage" class="alert alert-success">
     {{ flashMessage }}
-  </div>
+  </div> -->
   <router-view />
 </template>
 
